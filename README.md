@@ -5,7 +5,7 @@ Package to generate reports with [JasperReports 6](http://community.jaspersoft.c
 ## Install
 
 ```
-composer require cossou/jasperphp
+composer require idfake/jasperphp
 ```
 
 ## Introduction
@@ -40,7 +40,7 @@ I recommend using [Jaspersoft Studio](http://community.jaspersoft.com/project/ja
 
 ### The *Hello World* example.
 
-Go to the examples directory in the root of the repository (`vendor/cossou/jasperphp/examples`).
+Go to the examples directory in the root of the repository (`vendor/idfake/jasperphp/examples`).
 Open the `hello_world.jrxml` file with iReport or with your favorite text editor and take a look at the source code.
 
 #### Compiling
@@ -50,7 +50,7 @@ First we need to compile our `JRXML` file into a `JASPER` binary file. We just h
 **Note:** You don't need to do this step if you are using *Jaspersoft Studio*. You can compile directly within the program.
 
 ```php
-JasperPHP::compile(base_path('/vendor/cossou/jasperphp/examples/hello_world.jrxml'))->execute();
+JasperPHP::compile(base_path('/vendor/idfake/jasperphp/examples/hello_world.jrxml'))->execute();
 ```
 
 This command will compile the `hello_world.jrxml` source file to a `hello_world.jasper` file.
@@ -63,7 +63,7 @@ Now lets process the report that we compile before:
 
 ```php
 JasperPHP::process(
-	base_path('/vendor/cossou/jasperphp/examples/hello_world.jasper'),
+	base_path('/vendor/idfake/jasperphp/examples/hello_world.jasper'),
 	false,
 	array('pdf', 'rtf'),
 	array('php_version' => phpversion())
@@ -80,7 +80,7 @@ Querying the jasper file to examine parameters available in the given jasper rep
 
 ```php
 $output = JasperPHP::list_parameters(
-		base_path('/vendor/cossou/jasperphp/examples/hello_world.jasper')
+		base_path('/vendor/idfake/jasperphp/examples/hello_world.jasper')
 	)->execute();
 
 foreach($output as $parameter_description)
@@ -93,7 +93,7 @@ We can also specify parameters for connecting to database:
 
 ```php
 JasperPHP::process(
-    base_path('/vendor/cossou/jasperphp/examples/hello_world.jasper'),
+    base_path('/vendor/idfake/jasperphp/examples/hello_world.jasper'),
     false,
     array('pdf', 'rtf'),
     array('php_version' => phpversion()),
@@ -143,7 +143,7 @@ Now run the `java -version` again and check if the output is ok.
 Install [Composer](http://getcomposer.org) if you don't have it.
 
 ```
-composer require cossou/jasperphp
+composer require idfake/jasperphp
 ```
 
 Or in your `composer.json` file add:
@@ -151,7 +151,7 @@ Or in your `composer.json` file add:
 ```javascript
 {
     "require": {
-		"cossou/jasperphp": "~2",
+		"idfake/jasperphp": "~2",
     }
 }
 ```
@@ -197,7 +197,7 @@ class SomethingController
     public function generateReport()
     {        
         //jasper ready to call
-        JasperPHP::compile(base_path('/vendor/cossou/jasperphp/examples/hello_world.jrxml'))->execute();
+        JasperPHP::compile(base_path('/vendor/idfake/jasperphp/examples/hello_world.jrxml'))->execute();
     }
 }    
 ```
@@ -211,11 +211,11 @@ Route::get('/', function () {
     $jasper = new JasperPHP;
 
 	// Compile a JRXML to Jasper
-    $jasper->compile(__DIR__ . '/../../vendor/cossou/jasperphp/examples/hello_world.jrxml')->execute();
+    $jasper->compile(__DIR__ . '/../../vendor/idfake/jasperphp/examples/hello_world.jrxml')->execute();
 
 	// Process a Jasper file to PDF and RTF (you can use directly the .jrxml)
     $jasper->process(
-        __DIR__ . '/../../vendor/cossou/jasperphp/examples/hello_world.jasper',
+        __DIR__ . '/../../vendor/idfake/jasperphp/examples/hello_world.jasper',
         false,
         array("pdf", "rtf"),
         array("php_version" => "xxx")
@@ -223,7 +223,7 @@ Route::get('/', function () {
 
 	// List the parameters from a Jasper file.
     $array = $jasper->list_parameters(
-        __DIR__ . '/../../vendor/cossou/jasperphp/examples/hello_world.jasper'
+        __DIR__ . '/../../vendor/idfake/jasperphp/examples/hello_world.jasper'
     )->execute();
 
     return view('welcome');
@@ -342,7 +342,7 @@ Thanks to [Cenote GmbH](http://www.cenote.de/) for the [JasperStarter](http://ja
 
 ## Questions?
 
-Drop me a line on Twitter [@cossou](https://twitter.com/cossou).
+Drop me a line on Twitter [@idfake](https://twitter.com/idfake).
 
 ## License
 
